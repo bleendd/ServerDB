@@ -78,32 +78,9 @@ namespace ServerDB
                     writer.Serialize(file, lista);
                     file.Close();
                 }
-
-                // if webservice
-                // clientsList.Add(dataPrejKlientit, clientSocket);
-                // dergesa(dataPrejKlientit + " u lidh!", dataPrejKlientit, clientSocket, false);
-                // Console.WriteLine(dataPrejKlientit + " hyri ne chat!");
-
-
             }
 
         }
 
-        public static void dergesa(string msg, string uName, TcpClient clientSocket, bool flag)
-        {
-            NetworkStream broadcastStream = clientSocket.GetStream();
-            Byte[] broadcastBytes = null;
-
-            if (flag == true)
-            {
-                broadcastBytes = Encoding.ASCII.GetBytes(uName + " thot: " + msg);
-            }
-            else
-            {
-                broadcastBytes = Encoding.ASCII.GetBytes(msg);
-            }
-            broadcastStream.Write(broadcastBytes, 0, broadcastBytes.Length);
-            broadcastStream.Flush();
-        }
     }
 }
